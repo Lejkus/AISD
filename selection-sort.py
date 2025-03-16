@@ -23,5 +23,5 @@ def selection_sort(arr, n):
 arr = [9, 8, 3, 7, 11, 5, 6, 4, 1]
 n = len(arr)
 selection_sort(arr, n)
-print("\n🎯 Posortowana tablica:", arr)
+print("\n","Posortowana tablica:", arr)
 
