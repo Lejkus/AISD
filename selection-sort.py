@@ -1,3 +1,4 @@
+# https://www.youtube.com/watch?v=g-PGLbMth_g&t=1s
 def selection_sort(arr, n):
     # Przechodzimy przez całą tablicę
     for i in range(n):
