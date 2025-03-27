@@ -2,7 +2,9 @@
 #Jakub Walkowiak 165120
 import random
 from time import time
-def insertion_sort(arr)->None:
+def get_time(time_start: float, time_end: float):
+  return(round(float(format(time_end - time_start, "f")) * 1000, 5))
+def insertion_sort(arr):
     # iterujemy od drugiego elementu
     for i in range(1, len(arr)):
         klucz = arr[i]  # wybieramy element, który chcemy wstawić
@@ -13,8 +15,9 @@ def insertion_sort(arr)->None:
             j -= 1
         # wstawiamy klucz na właściwe miejsce
         arr[j + 1] = klucz
+    return arr
 
-def selection_sort(arr)-> None:
+def selection_sort(arr):
     # Przechodzimy przez całą tablicę
     for i in range(len(arr)):
         # Zakładamy, że minimalny element jest na pozycji i
@@ -25,8 +28,9 @@ def selection_sort(arr)-> None:
                 min_index = j
         # Zamieniamy miejscami aktualny element z najmniejszym znalezionym
         arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
 
-def shell_sort_sedgewick(arr)-> None:
+def shell_sort_sedgewick(arr):
     sedgewick_gaps = []
     # k to numer kolejnego odstępu podstawiony do wzoru
     k = 0
@@ -48,8 +52,9 @@ def shell_sort_sedgewick(arr)-> None:
                 j -= gap
             # wstawiamy liczbę na właściwe miejsce
             arr[j] = temp
+    return arr
 
-def heapify(arr, n, i) -> None:
+def heapify(arr, n, i):
     # Ustalamy, że największy element to korzeń
     największy = i  
     lewy = 2 * i + 1   # Lewy potomek
@@ -66,7 +71,7 @@ def heapify(arr, n, i) -> None:
         # Rekurencyjnie budujemy kopiec dla poddrzewa
         heapify(arr, n, największy)
 
-def heap_sort(arr) -> None:
+def heap_sort(arr):
     # Budujemy kopiec (przekształcamy tablicę w kopiec)
     for i in range(len(arr) // 2 - 1, -1, -1):
         heapify(arr, len(arr), i)
@@ -75,27 +80,28 @@ def heap_sort(arr) -> None:
         arr[i], arr[0] = arr[0], arr[i]  # Zamieniamy miejscami korzeń z ostatnim elementem
         # Wywołujemy heapify na zmniejszonym kopcu
         heapify(arr, i, 0)
+    return arr
 
 def quick_left(arr):
-   if len(arr)<=1:
+  if len(arr)<=1:
       return arr
-   pivot=arr[0]
-   # Podział tablicy na trzy części
-   lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
-   equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
-   greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
-   return quick_left(lower) + equal + quick_left(greater)
+  pivot=arr[0]
+  # Podział tablicy na trzy części
+  lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
+  equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
+  greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
+  return quick_left(lower) + equal + quick_left(greater)
 
 def quick_random(arr):
-   if len(arr) <= 1:
+  if len(arr) <= 1:
     return arr
-   pivot = arr[random.randint(0, len(arr) - 1)] 
-   # Podział tablicy na trzy części
-   lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
-   equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
-   greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
-   # Rekurencyjne sortowanie lewej i prawej części
-   return quick_random(lower) + equal + quick_random(greater)
+  pivot = arr[random.randint(0, len(arr) - 1)] 
+  # Podział tablicy na trzy części
+  lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
+  equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
+  greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
+  # Rekurencyjne sortowanie lewej i prawej części
+  return quick_random(lower) + equal + quick_random(greater)
 
 print("Wybierz jak ma być ułożony wygenerowany ciąg:")
 print("\n1. losowo \n2. rosnąco \n3. malejąco \n4. stale \n5. A-kształtnie")
@@ -128,14 +134,38 @@ print("\n1. insertion \n2. selection \n3. quick random \n4. heap \n5. quick left
 algo=int(input("Podaj algorytm do wykorzystania: "))
 match algo:
     case 1:
+      start_time = time()
       print(insertion_sort(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
     case 2:
+      start_time = time()
       print(selection_sort(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
     case 3:
+      start_time = time()
       print(quick_random(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
     case 4:
+      start_time = time()
       print(heap_sort(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
     case 5:
+      start_time = time()
       print(quick_left(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
     case 6:
+      start_time = time()
       print(shell_sort_sedgewick(ciag))
+      end_time = time()
+      time_taken = get_time(start_time, end_time)
+      print(f"Czas: {time_taken} ms")
