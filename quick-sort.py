@@ -1,22 +1,19 @@
 import random
 
 # https://www.youtube.com/watch?v=Hoixgm4-P4M
-def quicksort(arr, pivot_type='left'):
-    # Funkcja rekurencyjnego quicksorta
+def quicksort(arr, pivot_type):
+    # funkcja rekurencyjnego quicksorta
     if len(arr) < 2:
+        print("koniec rekurencji: ",arr)
         return arr
 
-    # Wybór pivota w zależności od opcji
+    # wybór pivota w zależności od opcji
     if pivot_type == 'left':
-        pivot = arr[0]  # Skrajnie lewy element
+        pivot = arr[0]  
     elif pivot_type == 'random':
-        pivot = random.choice(arr)  # Losowy element
-    else:
-        raise ValueError("Nieznany typ pivota. Użyj 'left' lub 'random'.")
+        pivot = random.choice(arr) 
 
-    print(f"Wybieramy pivot: {pivot}")
-
-    # Podział na mniejsze, równe i większe od pivota
+    # podział na mniejsze, równe i większe od pivota
     left = []
     equal = []
     right = []
@@ -32,19 +29,22 @@ def quicksort(arr, pivot_type='left'):
             print(f"{x} jest większe niż pivot {pivot}, dodajemy do prawej części")
             right.append(x)
 
-    print(f"Lewo: {left}, Równe: {equal}, Prawo: {right}\n")
+    print(f"lewo: {left}, równe: {equal}, rawo: {right}\n")
 
-    # Rekurencyjne sortowanie i scalanie
+    # rekurencyjne sortowanie i scalanie
     return quicksort(left, pivot_type) + equal + quicksort(right, pivot_type)
 
 
 # Przykładowe dane do testu
-data = [10, 7, 8, 9, 1, 5, 3, 2, 6, 4]
+data = [10, 7, 8, 9, 1, 5, 3, 2, 6]
+print(data)
 
 #print("Sortowanie z pivotem jako skrajnie lewym elementem:")
+
 #sorted_left_pivot = quicksort(data, pivot_type='left')
 #print("\nWynik:", sorted_left_pivot)
-print(data)
-print("\nSortowanie z pivotem jako losowym elementem:")
+
+
+#print("\nSortowanie z pivotem jako losowym elementem:")
 sorted_random_pivot = quicksort(data, pivot_type='random')
 print("\nWynik:", sorted_random_pivot)
