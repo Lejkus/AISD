@@ -10,21 +10,21 @@ def insertion_sort(arr):
         klucz = arr[i]  # wybieramy element, który chcemy wstawić
         j = i - 1  # patrzymy na poprzedni element
         
-        print(f"\n Rozważamy liczbę {klucz} na pozycji {i}")
+        print(f"\n rozważamy liczbę {klucz} na pozycji {i}")
 
         # przesuwamy elementy w prawo, jeśli są większe od klucza
         while j >= 0 and arr[j] > klucz:
-            print(f"Przesuwamy {arr[j]} z pozycji {j} na pozycję {j + 1}")
+            print(f"przesuwamy {arr[j]} z pozycji {j} na pozycję {j + 1}")
             arr[j + 1] = arr[j]
             j -= 1
 
         # wstawiamy klucz na właściwe miejsce
         arr[j + 1] = klucz
-        print(" Wstawiamy klucz na pozycję:", j + 1)
-        print(" Tablica po tej iteracji:", arr)
+        print(" wstawiamy klucz na pozycję:", j + 1)
+        print(" tablica po tej iteracji:", arr)
 
 
 # testujemy na prostym przykładzie
 arr = [12, 11, 13, 5, 6]
 insertion_sort(arr)
-print("\n Posortowana tablica:", arr)
+print("\n posortowana tablica:", arr)

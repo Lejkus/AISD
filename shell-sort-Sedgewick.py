@@ -39,4 +39,4 @@ def shell_sort_sedgewick(arr):
     return arr
 
 # Test
-print(shell_sort_sedgewick([9, 8, 3, 7, 11, 5, 6, 4, 1,]))  # [1, 3, 4, 5, 6, 7, 8, 9]
+print(shell_sort_sedgewick([9, 8, 3, 7, 11, 5, 6, 4, 1, 12]))  # [1, 3, 4, 5, 6, 7, 8, 9]
