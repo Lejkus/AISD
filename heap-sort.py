@@ -6,6 +6,15 @@ def heapify(arr, n, i):
     lewy = 2 * i + 1   # lewy potomek
     prawy = 2 * i + 2 # prawy potomek
 
+    # arr = [3, 9, 2, 1, 4, 5]
+    # korzeń (i = 0) = 3
+    # lewy potomek (1) = 9
+    # prawy potomek (2) = 2
+
+    # największy element to 9, więc zamieniamy 3 z 9.
+    # arr = [9, 3, 2, 1, 4, 5]
+
+
     # sprawdzamy, czy lewy potomek jest większy od korzenia
     if lewy < n and arr[lewy] > arr[największy]:
         największy = lewy

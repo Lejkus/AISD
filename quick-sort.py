@@ -2,18 +2,15 @@ import random
 
 # https://www.youtube.com/watch?v=Hoixgm4-P4M
 def quicksort(arr, pivot_type):
-    # funkcja rekurencyjnego quicksorta
     if len(arr) < 2:
         print("koniec rekurencji: ",arr)
         return arr
 
-    # wybór pivota w zależności od opcji
     if pivot_type == 'left':
         pivot = arr[0]  
     elif pivot_type == 'random':
         pivot = random.choice(arr) 
 
-    # podział na mniejsze, równe i większe od pivota
     left = []
     equal = []
     right = []
@@ -31,11 +28,10 @@ def quicksort(arr, pivot_type):
 
     print(f"lewo: {left}, równe: {equal}, rawo: {right}\n")
 
-    # rekurencyjne sortowanie i scalanie
+
     return quicksort(left, pivot_type) + equal + quicksort(right, pivot_type)
 
 
-# Przykładowe dane do testu
 data = [10, 7, 8, 9, 1, 5, 3, 2, 6]
 print(data)
 
