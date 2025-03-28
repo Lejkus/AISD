@@ -1,5 +1,9 @@
 #Anna Semrau 164294
 #Jakub Walkowiak 165120
+#1. Shell sedg - bardziej efektywnie by nie zajmomwało miejsca
+#2. selection sort nie działa
+#3. mniej komentarzy
+#4. quick sort bardziej efektywny
 import random
 from time import time
 def get_time(time_start: float, time_end: float):
@@ -82,26 +86,24 @@ def heap_sort(arr):
         heapify(arr, i, 0)
     return arr
 
-def quick_left(arr):
+def quick_sort(arr,sort):
   if len(arr)<=1:
       return arr
+  if (sort==1):
+     pivot=quick_random(arr)
+  else:
+     pivot=quick_left(arr)
   pivot=arr[0]
-  # Podział tablicy na trzy części
-  lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
-  equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
-  greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
+  lower = [x for x in arr if x < pivot]
+  equal = [x for x in arr if x == pivot]
+  greater = [x for x in arr if x > pivot]
   return quick_left(lower) + equal + quick_left(greater)
 
-def quick_random(arr):
-  if len(arr) <= 1:
-    return arr
-  pivot = arr[random.randint(0, len(arr) - 1)] 
-  # Podział tablicy na trzy części
-  lower = [x for x in arr if x < pivot]    # Elementy mniejsze od pivota
-  equal = [x for x in arr if x == pivot]   # Elementy równe pivotowi
-  greater = [x for x in arr if x > pivot]  # Elementy większe od pivota
-  # Rekurencyjne sortowanie lewej i prawej części
-  return quick_random(lower) + equal + quick_random(greater)
+def quick_random(arr):#, func):
+   return arr[random.randint(0, len(arr) - 1)] 
+
+def quick_left(arr):
+   return arr[0]
 
 print("Wybierz jak ma być ułożony wygenerowany ciąg:")
 print("\n1. losowo \n2. rosnąco \n3. malejąco \n4. stale \n5. A-kształtnie")
@@ -147,7 +149,7 @@ match algo:
       print(f"Czas: {time_taken} ms")
     case 3:
       start_time = time()
-      print(quick_random(ciag))
+      print(quick_sort(ciag,1))
       end_time = time()
       time_taken = get_time(start_time, end_time)
       print(f"Czas: {time_taken} ms")
@@ -159,7 +161,7 @@ match algo:
       print(f"Czas: {time_taken} ms")
     case 5:
       start_time = time()
-      print(quick_left(ciag))
+      print(quick_sort(ciag,2))
       end_time = time()
       time_taken = get_time(start_time, end_time)
       print(f"Czas: {time_taken} ms")
