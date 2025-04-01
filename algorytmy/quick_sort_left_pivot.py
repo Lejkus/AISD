@@ -1,3 +1,7 @@
+import sys
+sys.setrecursionlimit(10000)  # Ustawienie wyższego limitu
+
+
 def quicksort_left(arr):
     if len(arr) < 2:
         return arr

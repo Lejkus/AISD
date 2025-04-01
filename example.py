@@ -1,7 +1,7 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath("AISD"))
+sys.path.append(os.path.abspath("algorytmy"))
 
 from heap_sort import heap_sort
 from insertion_sort import insertion_sort
