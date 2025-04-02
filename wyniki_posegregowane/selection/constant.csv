@@ -1,0 +1,17 @@
+Algorithm,InputSize,Time
+selection_sort,4,0.01
+selection_sort,8,0.01
+selection_sort,16,0.01
+selection_sort,32,0.01
+selection_sort,64,0.01
+selection_sort,128,0.01
+selection_sort,256,0.01
+selection_sort,512,0.01
+selection_sort,1024,0.03
+selection_sort,2048,0.07
+selection_sort,4096,0.25
+selection_sort,8192,0.95
+selection_sort,16384,3.76
+selection_sort,32768,14.92
+selection_sort,65536,59.60
+selection_sort,131072,239.31
